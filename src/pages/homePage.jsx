@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 
 export default function Homepage() {
     const projects = [
@@ -19,10 +20,28 @@ export default function Homepage() {
 
     const skills = ["HTML", "CSS", "JavaScript", "React", "Node.js", "MongoDB", "Express", "Tailwind"];
 
+    useEffect(() => {
+        document.documentElement.style.scrollBehavior = "smooth";
+    }, []);
+
     return (
         <div className="font-sans text-gray-800 bg-white">
+
+            {/* Navigation Bar */}
+            <header className="fixed w-full bg-white shadow z-50">
+                <nav className="flex justify-between items-center px-6 py-4 max-w-6xl mx-auto">
+                    <h1 className="text-xl font-bold text-indigo-700">Dhananjaya</h1>
+                    <ul className="flex space-x-6 text-sm font-medium text-gray-700">
+                        <li><a href="#about" className="hover:text-indigo-600">About</a></li>
+                        <li><a href="#projects" className="hover:text-indigo-600">Projects</a></li>
+                        <li><a href="#skills" className="hover:text-indigo-600">Skills</a></li>
+                        <li><a href="#contact" className="hover:text-indigo-600">Contact</a></li>
+                    </ul>
+                </nav>
+            </header>
+
             {/* Hero Section */}
-            <section className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-indigo-100 to-white px-4 text-center">
+            <section className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-indigo-100 to-white px-4 text-center pt-24">
                 <h1 className="text-5xl font-bold mb-4">Hi, I'm Dhananjaya Perera</h1>
                 <p className="text-xl text-gray-600 mb-6">Full-Stack Software Engineer</p>
                 <a href="#contact" className="bg-indigo-600 text-white px-6 py-3 rounded-full hover:bg-indigo-700 transition">
