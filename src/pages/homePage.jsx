@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
+import emailjs from "emailjs-com";
 
 export default function Homepage() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -52,6 +53,31 @@ export default function Homepage() {
     "Tailwind",
     "JavaScript",
   ];
+
+  const inputStyle =
+  "w-full p-3 rounded-lg bg-white dark:bg-white/10 border border-gray-300 dark:border-white/20 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition";
+
+  function handleSubmit(e) {
+  e.preventDefault();
+
+  emailjs
+    .sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        e.target,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    )
+    .then(
+      () => {
+        alert("Message sent successfully!");
+        e.target.reset();
+      },
+      (error) => {
+        console.error("EmailJS error:", error);
+        alert("Failed to send. Please try again.");
+      }
+    );
+}
 
   return (
     <div className="font-sans dark:bg-gray-900 dark:text-gray-100 bg-white text-gray-900 min-h-screen">
@@ -186,25 +212,60 @@ export default function Homepage() {
         </div>
       </section>
 
-      {/* Contact Section */}
+     {/* Contact Section */}
       <section
         id="contact"
-        className="py-20 px-6 sm:px-12 bg-gray-100 dark:bg-gray-800 text-center animate-fadeIn"
+        className="py-20 px-6 sm:px-12 text-center animate-fadeIn bg-gray-100 dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-black"
         style={{ animationDuration: "1.8s" }}
       >
-        <h2 className="text-4xl font-extrabold mb-6 tracking-tight">
-          Contact
+        <h2 className="text-4xl font-extrabold mb-6 bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent">
+          Contact Me!
         </h2>
         <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-lg mx-auto leading-relaxed">
-          Want to work together or just say hi?
+          Got a question or proposal? Send me a message and I’ll reply soon.
         </p>
-        <a
-          href="mailto:youremail@example.com"
-          className="inline-block bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white px-10 py-4 rounded-full shadow-lg font-semibold transition-transform transform hover:scale-105"
+
+        <form
+          onSubmit={handleSubmit}
+          className="max-w-xl mx-auto bg-white dark:bg-white/10 backdrop-blur-md border border-gray-200 dark:border-white/20 rounded-2xl ..."
         >
-          youremail@example.com
-        </a>
+          <input
+            type="text"
+            name="name"
+            placeholder="Full Name"
+            required
+            className={inputStyle}
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            required
+            className={inputStyle}
+          />
+          <input
+            type="text"
+            name="subject"
+            placeholder="Email Subject"
+            required
+            className={inputStyle}
+          />
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            rows="5"
+            required
+            className={inputStyle}
+          />
+          <button
+            type="submit"
+            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg shadow-md transition"
+          >
+            Send Message
+          </button>
+        </form>
       </section>
+
 
       {/* Footer */}
       <footer className="text-center py-6 text-sm text-gray-500 dark:text-gray-400 select-none">
