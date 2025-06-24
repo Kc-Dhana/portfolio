@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
 import emailjs from "emailjs-com";
+import MatrixRain from "../components/matrixRain";
 
 export default function Homepage() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -114,27 +115,33 @@ export default function Homepage() {
 
       {/* Hero Section */}
       <section
-        className="pt-36 pb-24 flex flex-col items-center text-center px-6 sm:px-12 max-w-4xl mx-auto animate-fadeIn"
-        style={{ animationDuration: "1s" }}
-      >
-        <img
-          src="/my-photo.jpeg"
-          alt="Your Portrait"
-          className="w-44 h-44 sm:w-52 sm:h-52 object-cover rounded-full shadow-lg border-4 border-indigo-500 mb-8 transition-transform duration-500 hover:scale-105"
-        />
-        <h1 className="text-5xl sm:text-6xl font-extrabold mb-4 bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent select-none">
-          Hi, I'm Dhananjaya Perera
-        </h1>
-        <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-xl leading-relaxed">
-          Full-Stack Software Engineer
-        </p>
-        <a
-          href="#contact"
-          className="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white px-8 py-4 rounded-full shadow-lg font-semibold transition-transform transform hover:scale-105"
-        >
-          Contact Me
-        </a>
-      </section>
+  className="min-h-screen pt-36 pb-24 relative flex flex-col items-center justify-center text-center px-6 sm:px-12 animate-fadeIn overflow-hidden"
+  style={{ animationDuration: "1s" }}
+>
+  {/* Matrix background */}
+  <MatrixRain />
+
+  {/* Content on top */}
+  <div className="relative z-10">
+    <img
+      src="/my-photo.jpeg"
+      alt="Your Portrait"
+      className="w-44 h-44 sm:w-52 sm:h-52 object-cover rounded-full shadow-lg border-4 border-indigo-500 mb-8 transition-transform duration-500 hover:scale-105"
+    />
+    <h1 className="text-5xl sm:text-6xl font-extrabold mb-4 bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent select-none">
+      Hi, I'm Dhananjaya Perera
+    </h1>
+    <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-xl leading-relaxed">
+      Full-Stack Software Engineer
+    </p>
+    <a
+      href="#contact"
+      className="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white px-8 py-4 rounded-full shadow-lg font-semibold transition-transform transform hover:scale-105"
+    >
+      Contact Me
+    </a>
+  </div>
+</section>
 
       {/* About Section */}
       <section
