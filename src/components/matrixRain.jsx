@@ -33,7 +33,7 @@ export default function MatrixRain() {
       ctx.fillStyle = isDark ? "rgba(0, 0, 0, 0.05)" : "rgba(255, 255, 255, 0.05)";
       ctx.fillRect(0, 0, width, height);
 
-      ctx.fillStyle = isDark ? "#00ff00" : "#0f172a"; // neon green for dark, slate for light
+      ctx.fillStyle = isDark ? "#d1d5db" : "#0f172a"; // neon green for dark, slate for light
       ctx.font = fontSize + "px monospace";
 
       for (let i = 0; i < drops.length; i++) {
