@@ -1,3 +1,6 @@
+import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaJs, FaDatabase } from "react-icons/fa";
+import { SiTailwindcss, SiMongodb, SiExpress } from "react-icons/si";
+import ScrambleText from "../components/scrambleText";
 import { useEffect, useState } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
 import emailjs from "emailjs-com";
@@ -45,7 +48,7 @@ export default function Homepage() {
     },
   ];
 
-  const skills = [
+    const skills = [
     "React",
     "Node.js",
     "Express",
@@ -55,6 +58,17 @@ export default function Homepage() {
     "Tailwind",
     "JavaScript",
   ];
+
+const skillIcons = {
+  React: <FaReact className="text-cyan-400" />,
+  "Node.js": <FaNodeJs className="text-green-600" />,
+  Express: <SiExpress className="text-gray-700 dark:text-white" />,
+  MongoDB: <SiMongodb className="text-green-500" />,
+  HTML: <FaHtml5 className="text-orange-600" />,
+  CSS: <FaCss3Alt className="text-blue-500" />,
+  Tailwind: <SiTailwindcss className="text-sky-400" />,
+  JavaScript: <FaJs className="text-yellow-400" />,
+};
 
   const inputStyle =
   "w-full p-3 rounded-lg bg-white dark:bg-white/10 border border-gray-300 dark:border-white/20 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition";
@@ -172,26 +186,25 @@ export default function Homepage() {
         </div>
       </section>
 
-      {/* Skills Section */}
       <section
-        id="skills"
-        className="py-20 px-6 sm:px-12 max-w-5xl mx-auto animate-fadeIn"
-        style={{ animationDuration: "1.6s" }}
-      >
-        <h2 className="text-4xl font-extrabold mb-10 text-center tracking-wide">
-          Skills
-        </h2>
-        <div className="flex flex-wrap justify-center gap-5">
-          {skills.map((s, i) => (
-            <span
-              key={i}
-              className="bg-gradient-to-r from-indigo-200 to-purple-300 dark:from-indigo-700 dark:to-purple-900 text-indigo-900 dark:text-indigo-100 px-5 py-3 rounded-full text-base font-semibold shadow-md select-none cursor-default"
-            >
-              {s}
-            </span>
-          ))}
-        </div>
-      </section>
+          id="skills"
+          className="py-20 px-6 sm:px-12 max-w-5xl mx-auto animate-fadeIn"
+          style={{ animationDuration: "1.6s" }}
+        >
+          <ScrambleText text="Skills" speed={100} />
+          <div className="flex flex-wrap justify-center gap-6">
+            {skills.map((s, i) => (
+              <div
+                key={i}
+                className="flex flex-col items-center justify-center w-28 h-28 rounded-xl bg-gradient-to-br from-indigo-100 to-purple-200 dark:from-indigo-700 dark:to-purple-900 shadow-lg text-indigo-900 dark:text-white text-xl font-semibold animate-skill transition-transform duration-300 transform hover:scale-110"
+
+              >
+                <div className="text-3xl mb-2">{skillIcons[s] || "🔧"}</div>
+                <div className="text-sm">{s}</div>
+              </div>
+            ))}
+          </div>
+        </section>
 
      {/* Contact Section */}
       <section
