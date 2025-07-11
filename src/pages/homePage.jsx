@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
 import emailjs from "emailjs-com";
 import MatrixRain from "../components/matrixRain";
+import ProjectCard from "../components/projectCard";
 import HeroSection from "../components/heroSection";
 
 export default function Homepage() {
@@ -31,22 +32,35 @@ export default function Homepage() {
     html.style.scrollBehavior = "smooth";
   }, [darkMode]);
 
-  const projects = [
-    {
-      title: "Hotel Booking App",
-      description: "A MERN stack hotel booking app with admin dashboard.",
-      tech: ["React", "Node.js", "MongoDB"],
-      github: "#",
-      demo: "#",
-    },
-    {
-      title: "Employee API Service",
-      description: "Microservice for employee management using Express.",
-      tech: ["Express", "MongoDB"],
-      github: "#",
-      demo: "#",
-    },
-  ];
+const projects = [
+  {
+    title: "Hotel Booking App",
+    description: "A MERN stack hotel booking app with admin dashboard.",
+    tech: ["React", "Node.js", "MongoDB"],
+    frontend: "https://github.com/your/hotel-frontend",
+    backend: "https://github.com/your/hotel-backend",
+    demo: "https://hotel-booking.vercel.app",
+    images: [
+      "/Car_service.png",
+      "/Car_service1.PNG",
+      "/Car_service2.PNG",
+      "/Car_service5.png",
+    ],
+  },
+  {
+    title: "Employee API Service",
+    description: "Microservice for employee management using Express.",
+    tech: ["Express", "MongoDB"],
+    backend: "https://github.com/your/employee-api",
+    demo: "#",
+    images: [
+      "/blog1.png",
+      "/blog2.png",
+      "/blog3.png",
+      "/blog4.png",
+    ],
+  },
+];
 
     const skills = [
     "React",
@@ -153,37 +167,13 @@ const skillIcons = {
         className="py-20 px-6 sm:px-12 bg-gray-100 dark:bg-gray-800 animate-fadeIn"
         style={{ animationDuration: "1.4s" }}
       >
-        <h2 className="text-4xl font-extrabold mb-10 text-center tracking-wide">
-          Projects
-        </h2>
+        <ScrambleText text="Projects" speed={100} />
         <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
           {projects.map((p, i) => (
-            <div
-              key={i}
-              className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 transition-transform transform hover:scale-[1.03] hover:shadow-indigo-500/30"
-            >
-              <h3 className="text-2xl font-semibold mb-3">{p.title}</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">{p.description}</p>
-              <p className="text-sm text-gray-500 mb-6 italic">
-                Tech: {p.tech.join(", ")}
-              </p>
-              <div className="flex gap-6">
-                <a
-                  href={p.demo}
-                  className="text-indigo-600 hover:text-indigo-700 dark:hover:text-indigo-400 font-semibold underline transition"
-                >
-                  Live Demo
-                </a>
-                <a
-                  href={p.github}
-                  className="text-indigo-600 hover:text-indigo-700 dark:hover:text-indigo-400 font-semibold underline transition"
-                >
-                  GitHub
-                </a>
-              </div>
-            </div>
+            <ProjectCard key={i} {...p} />
           ))}
         </div>
+        
       </section>
 
       <section
