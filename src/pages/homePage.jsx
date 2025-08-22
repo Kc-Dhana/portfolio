@@ -7,6 +7,7 @@ import emailjs from "emailjs-com";
 import MatrixRain from "../components/matrixRain";
 import ProjectCard from "../components/projectCard";
 import HeroSection from "../components/heroSection";
+import { motion } from "framer-motion";
 
 export default function Homepage() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -118,7 +119,7 @@ const skillIcons = {
             Dhananjaya
           </h1>
           <nav className="hidden md:flex space-x-10 text-sm font-semibold tracking-wide">
-            {["About", "Projects", "Skills", "Contact"].map((section) => (
+            {["Hero","About", "Projects", "Skills", "Contact"].map((section) => (
               <a
                 key={section}
                 href={`#${section.toLowerCase()}`}
@@ -143,23 +144,64 @@ const skillIcons = {
       </header>
 
       {/* Hero Section */}
-      <HeroSection />
-
-      {/* About Section */}
       <section
-        id="about"
-        className="py-20 px-6 sm:px-12 max-w-3xl mx-auto text-center animate-fadeIn"
-        style={{ animationDuration: "1.2s" }}
-      >
-        <h2 className="text-4xl font-extrabold mb-6 tracking-tight">
-          About Me
-        </h2>
-        <p className="text-lg max-w-xl mx-auto text-gray-700 dark:text-gray-300 leading-relaxed">
-          I'm a software engineer passionate about building scalable, modern web
-          applications. I work with the MERN stack and love bringing designs to
-          life with responsive frontends and secure backends.
-        </p>
-      </section>
+        id="hero"
+        >
+        <HeroSection />
+        </section>
+      
+
+{/* About Section */}
+<section
+  id="about"
+  className="py-20 px-6 sm:px-12 max-w-7xl mx-auto animate-fadeIn"
+  style={{ animationDuration: "1.2s" }}
+>
+  <div className="flex flex-col md:flex-row items-center gap-16">
+    {/* Left - Text */}
+    <motion.div
+      className="text-center md:text-left max-w-2xl"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+    >
+      <ScrambleText text="About Me!" speed={100} />
+      <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mt-6">
+        I'm a software engineer passionate about building scalable, modern web
+        applications. I work with the MERN stack and love bringing designs to
+        life with responsive frontends and secure backends.
+      </p>
+    </motion.div>
+
+    {/* Right - Parallelogram Image */}
+    <motion.div
+      className="relative group"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.3, duration: 1 }}
+    >
+      {/* Background Shape */}
+      <div
+        className="absolute w-[300px] h-[400px] md:w-[340px] md:h-[460px] bg-red-700 opacity-80 blur-md z-0 group-hover:scale-105 transition-transform duration-500"
+        style={{
+          clipPath: "polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%)", // Parallelogram
+        }}
+      />
+
+      {/* Image */}
+      <img
+        src="/My_Photo2.png"
+        alt="Dhananjaya"
+        className="relative z-20 w-[300px] h-[400px] md:w-[340px] md:h-[460px] object-cover shadow-xl transition-transform duration-500 group-hover:scale-110"
+        style={{
+          clipPath: "polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%)", // Parallelogram
+        }}
+      />
+    </motion.div>
+  </div>
+</section>
+
+
 
       {/* Projects Section */}
       <section
@@ -202,9 +244,10 @@ const skillIcons = {
         className="py-20 px-6 sm:px-12 text-center animate-fadeIn bg-gray-100 dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-black"
         style={{ animationDuration: "1.8s" }}
       >
-        <h2 className="text-4xl font-extrabold mb-6 bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent">
+        {/* <h2 className="text-4xl font-extrabold mb-6 bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent">
           Contact Me!
-        </h2>
+        </h2> */}
+        <ScrambleText text="Contact Me!" speed={100} />
         <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-lg mx-auto leading-relaxed">
           Got a question or proposal? Send me a message and I’ll reply soon.
         </p>
