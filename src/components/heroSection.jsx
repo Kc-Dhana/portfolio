@@ -4,7 +4,7 @@ import MatrixRain from "../components/matrixRain";
 import { FaDownload } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 
-const greetings = ["Hello", "Hola", "Bonjour", "Namaste", "Ciao", "Konnichiwa"];
+const greetings = ["Hello", "Hola", "Bonjour", "Ayubowan", "Namaste", "Ciao", "Konnichiwa"];
 
 export default function HeroSection() {
   const [greetingIndex, setGreetingIndex] = useState(0);
