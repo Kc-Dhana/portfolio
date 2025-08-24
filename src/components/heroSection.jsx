@@ -53,20 +53,35 @@ export default function HeroSection() {
 
       {/* Hero Content */}
       <div className="relative z-10 flex flex-col md:flex-row items-center gap-16 max-w-7xl w-full md:pl-20">
-        {/* Image + Polygon Shape */}
-        <motion.div
-          className="relative group"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
-          <div className="w-[300px] h-[440px] md:w-[340px] md:h-[480px] bg-red-700 rounded-[20%_0%_20%_0%] absolute top-0 left-0 transform scale-100 group-hover:scale-105 transition-transform duration-500 z-0" />
-          <img
-            src="/My_Photo.png"
-            alt="Dhananjaya"
-            className="relative z-20 w-[300px] h-[440px] md:w-[340px] md:h-[480px] object-cover rounded-xl shadow-xl transition-transform duration-500 group-hover:scale-110"
-          />
-        </motion.div>
+      {/* Image + Rounded Shape + Glow */}
+      <motion.div
+        className="relative group"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        {/* Glowing bg that follows the rounded shape */}
+        <div
+          className="w-[300px] h-[440px] md:w-[340px] md:h-[480px]
+                    bg-red-700 opacity-80 rounded-[20%_0%_20%_0%]
+                    absolute top-0 left-0 z-0
+                    transform scale-100 group-hover:scale-105
+                    transition-transform duration-500"
+          style={{
+            // red glow like your About Me
+            filter: "drop-shadow(0 12px 36px rgba(0,0,0,0.45))"
+          }}
+        />
+
+        <img
+          src="/My_Photo.png"
+          alt="Dhananjaya"
+          className="relative z-20 w-[300px] h-[440px] md:w-[340px] md:h-[480px]
+                    object-cover rounded-[20%_0%_20%_0%]
+                    shadow-xl transition-all duration-700 ease-in-out group-hover:scale-110 grayscale group-hover:grayscale-0"
+        />
+      </motion.div>
+
 
         {/* Text and Buttons */}
         <motion.div

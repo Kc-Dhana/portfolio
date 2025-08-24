@@ -1,4 +1,4 @@
-import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaJs, FaDatabase, FaFacebookF, FaInstagram, FaGithub } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaJs, FaDatabase, FaFacebookF, FaInstagram, FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { SiTailwindcss, SiMongodb, SiExpress } from "react-icons/si";
 import ScrambleText from "../components/scrambleText";
 import { useEffect, useState } from "react";
@@ -227,7 +227,7 @@ export default function Homepage() {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400 }}
           >
-            Dhananjaya
+            K C Dhananjaya Perera
           </motion.h1>
           <nav className="hidden md:flex space-x-10 text-sm font-semibold tracking-wide">
             {["Hero","About", "Projects", "Skills", "Contact"].map((section, i) => (
@@ -263,6 +263,7 @@ export default function Homepage() {
       <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-40">
         <div className="flex flex-col space-y-4">
           {[
+            { icon: <FaLinkedinIn />, href: "https://linkedin.com/in/your-profile", color: "hover:text-blue-700" },
             { icon: <FaFacebookF />, href: "https://facebook.com/your-profile", color: "hover:text-blue-600" },
             { icon: <FaInstagram />, href: "https://instagram.com/your-profile", color: "hover:text-pink-500" },
             { icon: <FaGithub />, href: "https://github.com/your-username", color: "hover:text-gray-800 dark:hover:text-white" }
@@ -341,7 +342,7 @@ export default function Homepage() {
               <img
                 src="/My_Photo2.png"
                 alt="Dhananjaya"
-                className="relative z-20 w-[300px] h-[400px] md:w-[340px] md:h-[460px] object-cover shadow-xl transition-transform duration-500 group-hover:scale-110"
+                className="relative z-20 w-[300px] h-[400px] md:w-[340px] md:h-[460px] object-cover shadow-xl transition-all duration-700 ease-in-out group-hover:scale-110 grayscale group-hover:grayscale-0"
                 style={{
                   clipPath: "polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%)",
                 }}
