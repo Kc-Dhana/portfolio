@@ -354,59 +354,102 @@ export default function Homepage() {
         </div>
       </motion.section>
 
-      {/* Projects Section */}
-      <motion.section
-        id="projects"
-        className="relative py-16 sm:py-20 px-4 sm:px-6 lg:px-12 bg-gradient-to-br from-red-50/30 to-red-100/20 dark:from-red-900/20 dark:to-gray-900/80 backdrop-blur-sm overflow-hidden"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        <GeometricShapes />
-        <FloatingDots count={25} className="opacity-60" />
-        
-        <div className="relative z-10">
-          <motion.div 
-            className="text-center mb-8 sm:mb-12"
-            initial={{ opacity: 0, y: -50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <div className="relative inline-block">
-              <ScrambleText text="Projects" speed={100} />
-              {/* Modern underline */}
-              <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-red-500 via-red-600 to-red-500 dark:from-red-400 dark:via-red-500 dark:to-red-400 rounded-full opacity-80"></div>
-              <div className="absolute -bottom-1 left-1/4 w-1/2 h-0.5 bg-gradient-to-r from-transparent via-white dark:via-gray-200 to-transparent rounded-full opacity-60"></div>
-            </div>
-          </motion.div>
-          
-          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 max-w-6xl mx-auto">
-            {projects.map((p, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 100, scale: 0.8 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ 
-                  duration: 0.8, 
-                  delay: 0.4 + i * 0.2, 
-                  ease: "easeOut",
-                  type: "spring",
-                  stiffness: 100
-                }}
-                viewport={{ once: true }}
-                className="relative group"
-              >
-                <div className="absolute -inset-2 bg-gradient-to-r from-red-500/10 to-red-600/10 dark:from-red-900/20 dark:to-gray-900/30 rounded-2xl backdrop-blur-sm border border-white/20 dark:border-white/10 group-hover:scale-105 transition-all duration-300"></div>
-                <div className="relative z-10">
-                  <ProjectCard {...p} />
-                </div>
-              </motion.div>
-            ))}
+{/* Projects Section */}
+<motion.section
+  id="projects"
+  className="relative 
+            py-12 xs:py-14 sm:py-16 md:py-16 lg:py-20 xl:py-20
+            px-3 xs:px-4 sm:px-6 md:px-6 lg:px-12 xl:px-12
+            bg-gradient-to-br from-red-50/30 to-red-100/20 dark:from-red-900/20 dark:to-gray-900/80 
+            backdrop-blur-sm overflow-hidden"
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  transition={{ duration: 1.2, ease: "easeOut" }}
+  viewport={{ once: true, margin: "-100px" }}
+>
+  <GeometricShapes />
+  <FloatingDots 
+    count={15} 
+    className="opacity-60 sm:hidden" // Fewer dots on mobile
+  />
+  <FloatingDots 
+    count={25} 
+    className="opacity-60 hidden sm:block" // Original count for tablet+
+  />
+  
+  <div className="relative z-10">
+    <motion.div 
+      className="text-center 
+                mb-6 xs:mb-7 sm:mb-8 md:mb-8 lg:mb-12 xl:mb-12"
+      initial={{ opacity: 0, y: -50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.2 }}
+      viewport={{ once: true }}
+    >
+      <div className="relative inline-block">
+        <ScrambleText 
+          text="Projects" 
+          speed={100}
+          className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl
+                    font-extrabold text-gray-900 dark:text-white"
+        />
+        {/* Modern underline */}
+        <div className="absolute 
+                       -bottom-0.5 xs:-bottom-0.5 sm:-bottom-1 md:-bottom-1 lg:-bottom-1 xl:-bottom-1
+                       left-0 w-full 
+                       h-0.5 sm:h-0.5 md:h-0.5 lg:h-0.5 xl:h-0.5
+                       bg-gradient-to-r from-red-500 via-red-600 to-red-500 
+                       dark:from-red-400 dark:via-red-500 dark:to-red-400 
+                       rounded-full opacity-80"></div>
+        <div className="absolute 
+                       -bottom-0.5 xs:-bottom-0.5 sm:-bottom-1 md:-bottom-1 lg:-bottom-1 xl:-bottom-1
+                       left-1/4 w-1/2 
+                       h-0.5 sm:h-0.5 md:h-0.5 lg:h-0.5 xl:h-0.5
+                       bg-gradient-to-r from-transparent via-white dark:via-gray-200 to-transparent 
+                       rounded-full opacity-60"></div>
+      </div>
+    </motion.div>
+    
+    <div className="grid 
+                   grid-cols-1 
+                   sm:grid-cols-2 
+                   md:grid-cols-2 
+                   lg:grid-cols-2 
+                   xl:grid-cols-2
+                   gap-4 xs:gap-5 sm:gap-4 md:gap-8 lg:gap-10 xl:gap-10
+                   max-w-sm xs:max-w-md sm:max-w-3xl md:max-w-4xl lg:max-w-6xl xl:max-w-6xl
+                   mx-auto">
+      {projects.map((p, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 100, scale: 0.8 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ 
+            duration: 0.8, 
+            delay: 0.4 + i * 0.2, 
+            ease: "easeOut",
+            type: "spring",
+            stiffness: 100
+          }}
+          viewport={{ once: true }}
+          className="relative group"
+        >
+          <div className="absolute 
+                         -inset-1 xs:-inset-1.5 sm:-inset-2 md:-inset-2 lg:-inset-2 xl:-inset-2
+                         bg-gradient-to-r from-red-500/10 to-red-600/10 
+                         dark:from-red-900/20 dark:to-gray-900/30 
+                         rounded-xl xs:rounded-xl sm:rounded-2xl md:rounded-2xl lg:rounded-2xl xl:rounded-2xl
+                         backdrop-blur-sm border border-white/20 dark:border-white/10 
+                         group-hover:scale-105 
+                         transition-all duration-300"></div>
+          <div className="relative z-10">
+            <ProjectCard {...p} />
           </div>
-        </div>
-      </motion.section>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</motion.section>
 
       {/* Skills Section */}
       <motion.section
