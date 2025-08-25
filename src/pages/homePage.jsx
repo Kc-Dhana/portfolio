@@ -193,7 +193,7 @@ export default function Homepage() {
   };
 
   const inputStyle =
-    "w-full p-4 rounded-xl bg-white/80 dark:bg-white/5 backdrop-blur-md border border-gray-300/50 dark:border-white/10 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-400/50 focus:border-red-400/50 transition-all duration-300";
+    "w-full p-3 sm:p-4 rounded-xl bg-white/80 dark:bg-white/5 backdrop-blur-md border border-gray-300/50 dark:border-white/10 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-400/50 focus:border-red-400/50 transition-all duration-300";
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -221,15 +221,15 @@ export default function Homepage() {
     <div className="font-sans dark:bg-gray-900 bg-red-50 text-gray-900 dark:text-gray-100 min-h-screen">
       {/* Navigation */}
       <header className="fixed top-0 left-0 right-0 bg-white/80 dark:bg-gray-950/80 backdrop-blur-lg shadow-lg border-b border-white/20 dark:border-white/10 z-50 transition-all duration-500">
-        <div className="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+        <div className="flex justify-between items-center px-4 sm:px-6 lg:px-8 py-4 max-w-7xl mx-auto">
           <motion.h1 
-            className="text-2xl font-extrabold bg-gradient-to-r from-red-600 to-red-800 dark:from-red-400 dark:to-red-600 bg-clip-text text-transparent tracking-wide cursor-default select-none"
+            className="text-lg sm:text-xl lg:text-2xl font-extrabold bg-gradient-to-r from-red-600 to-red-800 dark:from-red-400 dark:to-red-600 bg-clip-text text-transparent tracking-wide cursor-default select-none"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400 }}
           >
             K C Dhananjaya Perera
           </motion.h1>
-          <nav className="hidden md:flex space-x-10 text-sm font-semibold tracking-wide">
+          <nav className="hidden md:flex space-x-6 lg:space-x-10 text-sm font-semibold tracking-wide">
             {["Hero","About", "Projects", "Skills", "Contact"].map((section, i) => (
               <motion.a
                 key={section}
@@ -248,7 +248,7 @@ export default function Homepage() {
 
           <motion.button
             onClick={() => setDarkMode(!darkMode)}
-            className="text-2xl p-3 rounded-full bg-white/20 dark:bg-gray-800/50 backdrop-blur-md border border-white/30 dark:border-white/10 text-red-600 dark:text-yellow-400 hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="text-xl sm:text-2xl p-2 sm:p-3 rounded-full bg-white/20 dark:bg-gray-800/50 backdrop-blur-md border border-white/30 dark:border-white/10 text-red-600 dark:text-yellow-400 hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl"
             title="Toggle Dark Mode"
             aria-label="Toggle dark mode"
             whileHover={{ rotate: 180 }}
@@ -259,8 +259,8 @@ export default function Homepage() {
         </div>
       </header>
 
-      {/* Fixed Social Media Sidebar */}
-      <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-40">
+      {/* Fixed Social Media Sidebar - Hidden on mobile */}
+      <div className="hidden lg:block fixed right-6 top-1/2 transform -translate-y-1/2 z-40">
         <div className="flex flex-col space-y-4">
           {[
             { icon: <FaLinkedinIn />, href: "https://linkedin.com/in/your-profile", color: "hover:text-blue-700" },
@@ -291,10 +291,10 @@ export default function Homepage() {
         <HeroSection />
       </section>
 
-      {/* About Section */}
+      {/* About Section - Optimized for full screen */}
       <motion.section
         id="about"
-        className="relative py-20 px-6 sm:px-12 max-w-7xl mx-auto overflow-hidden"
+        className="relative min-h-screen flex items-center justify-center py-16 sm:py-20 px-4 sm:px-6 lg:px-12 overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
@@ -303,22 +303,24 @@ export default function Homepage() {
         <FloatingDots count={15} />
         <ParticleSystem />
         
-        <div className="relative z-10">
-          <div className="flex flex-col md:flex-row items-center gap-16">
+        <div className="relative z-10 max-w-7xl mx-auto w-full">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 h-full">
             <motion.div
-              className="text-center md:text-left max-w-2xl relative"
+              className="text-center lg:text-left max-w-2xl relative flex-1"
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
               viewport={{ once: true }}
             >
               <div className="absolute -inset-4 bg-gradient-to-r from-red-500/10 to-red-600/10 dark:from-red-900/20 dark:to-gray-900/30 rounded-2xl backdrop-blur-sm border border-white/20 dark:border-white/10"></div>
-              <div className="relative z-10 p-6">
-                <div className="relative inline-block">
+              <div className="relative z-10 p-4 sm:p-6">
+                <div className="relative inline-block mb-4">
                   <ScrambleText text="About Me!" speed={100} />
-                  <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-red-600 dark:from-red-400 dark:to-red-500 rounded-full"></div>
+                  {/* Modern underline */}
+                  <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-red-500 via-red-600 to-red-500 dark:from-red-400 dark:via-red-500 dark:to-red-400 rounded-full opacity-80"></div>
+                  <div className="absolute -bottom-1 left-1/4 w-1/2 h-0.5 bg-gradient-to-r from-transparent via-white dark:via-gray-200 to-transparent rounded-full opacity-60"></div>
                 </div>
-                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mt-6">
+                <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                   I'm a software engineer passionate about building scalable, modern web
                   applications. I work with the MERN stack and love bringing designs to
                   life with responsive frontends and secure backends.
@@ -327,14 +329,14 @@ export default function Homepage() {
             </motion.div>
 
             <motion.div
-              className="relative group"
+              className="relative group flex-shrink-0"
               initial={{ opacity: 0, x: 100 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
               viewport={{ once: true }}
             >
               <div
-                className="absolute w-[300px] h-[400px] md:w-[340px] md:h-[460px] bg-red-700 opacity-80 blur-md z-0 group-hover:scale-105 transition-transform duration-500"
+                className="absolute w-[250px] h-[320px] sm:w-[300px] sm:h-[400px] lg:w-[340px] lg:h-[460px] bg-red-700 opacity-80 blur-md z-0 group-hover:scale-105 transition-transform duration-500"
                 style={{
                   clipPath: "polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%)",
                 }}
@@ -342,7 +344,7 @@ export default function Homepage() {
               <img
                 src="/My_Photo2.png"
                 alt="Dhananjaya"
-                className="relative z-20 w-[300px] h-[400px] md:w-[340px] md:h-[460px] object-cover shadow-xl transition-all duration-700 ease-in-out group-hover:scale-110 grayscale group-hover:grayscale-0"
+                className="relative z-20 w-[250px] h-[320px] sm:w-[300px] sm:h-[400px] lg:w-[340px] lg:h-[460px] object-cover shadow-xl transition-all duration-700 ease-in-out group-hover:scale-110 grayscale group-hover:grayscale-0"
                 style={{
                   clipPath: "polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%)",
                 }}
@@ -355,7 +357,7 @@ export default function Homepage() {
       {/* Projects Section */}
       <motion.section
         id="projects"
-        className="relative py-20 px-6 sm:px-12 bg-gradient-to-br from-red-50/30 to-red-100/20 dark:from-red-900/20 dark:to-gray-900/80 backdrop-blur-sm overflow-hidden"
+        className="relative py-16 sm:py-20 px-4 sm:px-6 lg:px-12 bg-gradient-to-br from-red-50/30 to-red-100/20 dark:from-red-900/20 dark:to-gray-900/80 backdrop-blur-sm overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
@@ -366,7 +368,7 @@ export default function Homepage() {
         
         <div className="relative z-10">
           <motion.div 
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
             initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -374,11 +376,13 @@ export default function Homepage() {
           >
             <div className="relative inline-block">
               <ScrambleText text="Projects" speed={100} />
-              <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-red-600 dark:from-red-400 dark:to-red-500 rounded-full"></div>
+              {/* Modern underline */}
+              <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-red-500 via-red-600 to-red-500 dark:from-red-400 dark:via-red-500 dark:to-red-400 rounded-full opacity-80"></div>
+              <div className="absolute -bottom-1 left-1/4 w-1/2 h-0.5 bg-gradient-to-r from-transparent via-white dark:via-gray-200 to-transparent rounded-full opacity-60"></div>
             </div>
           </motion.div>
           
-          <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 max-w-6xl mx-auto">
             {projects.map((p, i) => (
               <motion.div
                 key={i}
@@ -407,7 +411,7 @@ export default function Homepage() {
       {/* Skills Section */}
       <motion.section
         id="skills"
-        className="relative py-20 px-6 sm:px-12 max-w-5xl mx-auto overflow-hidden"
+        className="relative py-16 sm:py-20 px-4 sm:px-6 lg:px-12 max-w-5xl mx-auto overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
@@ -418,7 +422,7 @@ export default function Homepage() {
         
         <div className="relative z-10">
           <motion.div 
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
             initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -426,11 +430,13 @@ export default function Homepage() {
           >
             <div className="relative inline-block">
               <ScrambleText text="Skills" speed={100} />
-              <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-red-600 dark:from-red-400 dark:to-red-500 rounded-full"></div>
+              {/* Modern underline */}
+              <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-red-500 via-red-600 to-red-500 dark:from-red-400 dark:via-red-500 dark:to-red-400 rounded-full opacity-80"></div>
+              <div className="absolute -bottom-1 left-1/4 w-1/2 h-0.5 bg-gradient-to-r from-transparent via-white dark:via-gray-200 to-transparent rounded-full opacity-60"></div>
             </div>
           </motion.div>
           
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
             {skills.map((s, i) => (
               <motion.div
                 key={i}
@@ -453,15 +459,15 @@ export default function Homepage() {
                 }}
               >
                 <div className="absolute -inset-1 bg-gradient-to-r from-red-500/20 to-red-600/20 dark:from-red-900/30 dark:to-gray-900/40 rounded-xl backdrop-blur-sm border border-white/30 dark:border-white/20 group-hover:border-red-400/50 transition-all duration-300"></div>
-                <div className="relative flex flex-col items-center justify-center w-28 h-28 rounded-xl bg-white/10 dark:bg-white/5 backdrop-blur-md text-red-900 dark:text-white text-xl font-semibold transition-all duration-300">
+                <div className="relative flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-xl bg-white/10 dark:bg-white/5 backdrop-blur-md text-red-900 dark:text-white text-sm sm:text-lg lg:text-xl font-semibold transition-all duration-300">
                   <motion.div 
-                    className="text-3xl mb-2"
+                    className="text-xl sm:text-2xl lg:text-3xl mb-1 sm:mb-2"
                     whileHover={{ rotate: 360, scale: 1.2 }}
                     transition={{ duration: 0.5 }}
                   >
                     {skillIcons[s] || "🔧"}
                   </motion.div>
-                  <div className="text-sm">{s}</div>
+                  <div className="text-xs sm:text-sm">{s}</div>
                 </div>
               </motion.div>
             ))}
@@ -469,10 +475,10 @@ export default function Homepage() {
         </div>
       </motion.section>
 
-      {/* Contact Section */}
+      {/* Contact Section - Optimized for full screen */}
       <motion.section
         id="contact"
-        className="relative py-20 px-6 sm:px-12 text-center bg-gradient-to-br from-red-50/30 to-red-100/20 dark:from-red-900/20 dark:via-gray-800/60 dark:to-black/90 backdrop-blur-sm overflow-hidden"
+        className="relative min-h-screen flex items-center justify-center py-16 sm:py-20 px-4 sm:px-6 lg:px-12 text-center bg-gradient-to-br from-red-50/30 to-red-100/20 dark:from-red-900/20 dark:via-gray-800/60 dark:to-black/90 backdrop-blur-sm overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
@@ -481,9 +487,9 @@ export default function Homepage() {
         <GeometricShapes />
         <ParticleSystem />
         
-        <div className="relative z-10">
+        <div className="relative z-10 max-w-4xl mx-auto w-full">
           <motion.div 
-            className="mb-8"
+            className="mb-6 sm:mb-8"
             initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -491,12 +497,14 @@ export default function Homepage() {
           >
             <div className="relative inline-block">
               <ScrambleText text="Contact Me!" speed={100} />
-              <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-red-600 dark:from-red-400 dark:to-red-500 rounded-full"></div>
+              {/* Modern underline */}
+              <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-red-500 via-red-600 to-red-500 dark:from-red-400 dark:via-red-500 dark:to-red-400 rounded-full opacity-80"></div>
+              <div className="absolute -bottom-1 left-1/4 w-1/2 h-0.5 bg-gradient-to-r from-transparent via-white dark:via-gray-200 to-transparent rounded-full opacity-60"></div>
             </div>
           </motion.div>
           
           <motion.p 
-            className="text-lg text-gray-700 dark:text-gray-300 mb-12 max-w-lg mx-auto leading-relaxed"
+            className="text-base sm:text-lg text-gray-700 dark:text-gray-300 mb-8 sm:mb-12 max-w-lg mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -520,7 +528,7 @@ export default function Homepage() {
             viewport={{ once: true }}
           >
             <div className="absolute -inset-4 bg-white/40 dark:bg-white/5 backdrop-blur-md rounded-3xl border border-gray-200/50 dark:border-white/10 shadow-2xl"></div>
-            <div className="relative z-10 p-8 space-y-6">
+            <div className="relative z-10 p-6 sm:p-8 space-y-4 sm:space-y-6">
               <motion.input
                 type="text"
                 name="name"
@@ -557,7 +565,7 @@ export default function Homepage() {
               <motion.textarea
                 name="message"
                 placeholder="Your Message"
-                rows="5"
+                rows="4"
                 required
                 className={inputStyle}
                 initial={{ y: 50, opacity: 0 }}
@@ -567,7 +575,7 @@ export default function Homepage() {
               />
               <motion.button
                 type="submit"
-                className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-4 rounded-xl shadow-lg transition-all duration-300 backdrop-blur-sm border border-red-500/20"
+                className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-3 sm:py-4 rounded-xl shadow-lg transition-all duration-300 backdrop-blur-sm border border-red-500/20"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 initial={{ y: 50, opacity: 0 }}
@@ -579,19 +587,51 @@ export default function Homepage() {
               </motion.button>
             </div>
           </motion.form>
+
+          {/* Mobile Social Media Links */}
+          <motion.div 
+            className="flex lg:hidden justify-center space-x-6 mt-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.4 }}
+            viewport={{ once: true }}
+          >
+            {[
+              { icon: <FaLinkedinIn />, href: "https://linkedin.com/in/your-profile", color: "hover:text-blue-700" },
+              { icon: <FaFacebookF />, href: "https://facebook.com/your-profile", color: "hover:text-blue-600" },
+              { icon: <FaInstagram />, href: "https://instagram.com/your-profile", color: "hover:text-pink-500" },
+              { icon: <FaGithub />, href: "https://github.com/your-username", color: "hover:text-gray-800 dark:hover:text-white" }
+            ].map((social, i) => (
+              <motion.a
+                key={i}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`p-3 rounded-full bg-white/20 dark:bg-gray-800/50 backdrop-blur-md border border-white/30 dark:border-white/10 text-gray-600 dark:text-gray-300 ${social.color} transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl`}
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1.6 + i * 0.1, duration: 0.4 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.15, y: -5 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {social.icon}
+              </motion.a>
+            ))}
+          </motion.div>
         </div>
       </motion.section>
 
       {/* Footer */}
       <motion.footer 
-        className="relative text-center py-8 text-sm text-gray-500 dark:text-gray-400 select-none backdrop-blur-sm border-t border-white/10 dark:border-white/5"
+        className="relative text-center py-6 sm:py-8 text-xs sm:text-sm text-gray-500 dark:text-gray-400 select-none backdrop-blur-sm border-t border-white/10 dark:border-white/5"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-red-500/5 to-transparent dark:via-red-400/5"></div>
-        <div className="relative z-10">
+        <div className="relative z-10 px-4">
           &copy; {new Date().getFullYear()} Dhananjaya Perera. All rights reserved.
         </div>
       </motion.footer>
@@ -643,6 +683,80 @@ export default function Homepage() {
           html {
             scroll-behavior: smooth;
           }
+        }
+
+        /* Mobile Menu Toggle - Hidden by default, can be added if needed */
+        @media (max-width: 768px) {
+          .mobile-menu {
+            display: none;
+          }
+          
+          .mobile-menu.open {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            gap: 1rem;
+          }
+          
+          .dark .mobile-menu.open {
+            background: rgba(17, 24, 39, 0.95);
+          }
+        }
+
+        /* Responsive text sizing */
+        @media (max-width: 640px) {
+          .section-title {
+            font-size: 2rem;
+          }
+        }
+
+        @media (min-width: 641px) and (max-width: 1024px) {
+          .section-title {
+            font-size: 2.5rem;
+          }
+        }
+
+        @media (min-width: 1025px) {
+          .section-title {
+            font-size: 3rem;
+          }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+          background: rgba(255, 255, 255, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background: rgba(239, 68, 68, 0.5);
+          border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+          background: rgba(239, 68, 68, 0.7);
+        }
+
+        .dark ::-webkit-scrollbar-track {
+          background: rgba(17, 24, 39, 0.3);
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+          background: rgba(248, 113, 113, 0.5);
+        }
+
+        .dark ::-webkit-scrollbar-thumb:hover {
+          background: rgba(248, 113, 113, 0.7);
         }
       `}</style>
     </div>
