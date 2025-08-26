@@ -114,19 +114,19 @@ const GeometricShapes = () => {
 };
 
 export default function Homepage() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const savedTheme = localStorage.getItem("theme");
-      if (savedTheme) {
-        setDarkMode(savedTheme === "dark");
-      } else {
-        setDarkMode(window.matchMedia("(prefers-color-scheme: dark)").matches);
-      }
+useEffect(() => {
+  if (typeof window !== "undefined") {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      setDarkMode(savedTheme === "dark");
+    } else {
+      setDarkMode(true); // default dark
     }
-  }, []);
+  }
+}, []);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
