@@ -1,4 +1,4 @@
-import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaJs, FaDatabase, FaFacebookF, FaInstagram, FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaJs, FaDatabase, FaFacebookF, FaInstagram, FaGithub, FaLinkedinIn, FaBars, FaTimes} from "react-icons/fa";
 import { SiTailwindcss, SiMongodb, SiExpress } from "react-icons/si";
 import ScrambleText from "../components/scrambleText";
 import { useEffect, useState } from "react";
@@ -7,11 +7,12 @@ import emailjs from "emailjs-com";
 import MatrixRain from "../components/matrixRain";
 import ProjectCard from "../components/projectCard";
 import HeroSection from "../components/heroSection";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Floating Dots Background Component
 const FloatingDots = ({ count = 20, className = "" }) => {
   const [dimensions, setDimensions] = useState({ width: 1200, height: 800 });
+
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -114,6 +115,7 @@ const GeometricShapes = () => {
 
 export default function Homepage() {
   const [darkMode, setDarkMode] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -220,44 +222,158 @@ export default function Homepage() {
   return (
     <div className="font-sans dark:bg-gray-900 bg-red-50 text-gray-900 dark:text-gray-100 min-h-screen">
       {/* Navigation */}
-      <header className="fixed top-0 left-0 right-0 bg-white/80 dark:bg-gray-950/80 backdrop-blur-lg shadow-lg border-b border-white/20 dark:border-white/10 z-50 transition-all duration-500">
-        <div className="flex justify-between items-center px-4 sm:px-6 lg:px-8 py-4 max-w-7xl mx-auto">
-          <motion.h1 
-            className="text-lg sm:text-xl lg:text-2xl font-extrabold bg-gradient-to-r from-red-600 to-red-800 dark:from-red-400 dark:to-red-600 bg-clip-text text-transparent tracking-wide cursor-default select-none"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 400 }}
+<header className="fixed top-0 left-0 right-0 bg-white/80 dark:bg-gray-950/80 backdrop-blur-lg shadow-lg border-b border-white/20 dark:border-white/10 z-50 transition-all duration-500">
+    <div className="flex justify-between items-center px-4 sm:px-6 lg:px-8 py-4 max-w-7xl mx-auto">
+      
+      {/* Mobile Menu Button - Left side */}
+      <motion.button
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        className="md:hidden text-xl p-2 rounded-full bg-white/20 dark:bg-gray-800/50 backdrop-blur-md border border-white/30 dark:border-white/10 text-red-600 dark:text-red-400 hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl"
+        title="Toggle Menu"
+        aria-label="Toggle mobile menu"
+        whileHover={{ rotate: 180 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={isMenuOpen ? 'close' : 'menu'}
+            initial={{ rotate: -90, opacity: 0 }}
+            animate={{ rotate: 0, opacity: 1 }}
+            exit={{ rotate: 90, opacity: 0 }}
+            transition={{ duration: 0.2 }}
           >
-            K C Dhananjaya Perera
-          </motion.h1>
-          <nav className="hidden md:flex space-x-6 lg:space-x-10 text-sm font-semibold tracking-wide">
-            {["Hero","About", "Projects", "Skills", "Contact"].map((section, i) => (
-              <motion.a
-                key={section}
-                href={`#${section.toLowerCase()}`}
-                className="relative group text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-colors duration-300"
-                whileHover={{ y: -2 }}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-              >
-                {section}
-                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-gradient-to-r from-red-500 to-red-600 dark:from-red-400 dark:to-red-500 group-hover:w-full transition-[width] duration-300"></span>
-              </motion.a>
-            ))}
-          </nav>
+            {isMenuOpen ? <FaTimes /> : <FaBars />}
+          </motion.div>
+        </AnimatePresence>
+      </motion.button>
 
+      {/* Logo/Name */}
+      <motion.h1 
+        className="text-lg sm:text-xl lg:text-2xl font-extrabold bg-gradient-to-r from-red-600 to-red-800 dark:from-red-400 dark:to-red-600 bg-clip-text text-transparent tracking-wide cursor-default select-none"
+        whileHover={{ scale: 1.05 }}
+        transition={{ type: "spring", stiffness: 400 }}
+      >
+        K C Dhananjaya Perera
+      </motion.h1>
+
+      {/* Desktop Navigation - Hidden on mobile */}
+      <nav className="hidden md:flex space-x-6 lg:space-x-10 text-sm font-semibold tracking-wide">
+        {["Hero","About", "Projects", "Skills", "Contact"].map((section, i) => (
+          <motion.a
+            key={section}
+            href={`#${section.toLowerCase()}`}
+            className="relative group text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-colors duration-300"
+            whileHover={{ y: -2 }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.1 }}
+          >
+            {section}
+            <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-gradient-to-r from-red-500 to-red-600 dark:from-red-400 dark:to-red-500 group-hover:w-full transition-[width] duration-300"></span>
+          </motion.a>
+        ))}
+      </nav>
+
+      {/* Dark Mode Toggle */}
+      <motion.button
+        onClick={() => setDarkMode(!darkMode)}
+        className="text-xl sm:text-2xl p-2 sm:p-3 rounded-full bg-white/20 dark:bg-gray-800/50 backdrop-blur-md border border-white/30 dark:border-white/10 text-red-600 dark:text-yellow-400 hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl"
+        title="Toggle Dark Mode"
+        aria-label="Toggle dark mode"
+        whileHover={{ rotate: 180 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        {darkMode ? <FaSun /> : <FaMoon />}
+      </motion.button>
+    </div>
+  </header>
+
+  {/* Mobile Menu Overlay */}
+  <AnimatePresence>
+    {isMenuOpen && (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
+        onClick={() => setIsMenuOpen(false)}
+      />
+    )}
+  </AnimatePresence>
+
+  {/* Mobile Slide Menu */}
+  <AnimatePresence>
+    {isMenuOpen && (
+      <motion.nav
+        initial={{ x: -300, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: -300, opacity: 0 }}
+        transition={{ 
+          type: "spring", 
+          stiffness: 300, 
+          damping: 30,
+          opacity: { duration: 0.2 }
+        }}
+        className="fixed top-0 left-0 h-full w-64 bg-white/95 dark:bg-gray-950/95 backdrop-blur-lg shadow-2xl z-50 md:hidden border-r border-white/20 dark:border-white/10"
+      >
+        {/* Menu Header */}
+        <div className="flex items-center justify-between p-4 border-b border-white/20 dark:border-white/10">
+          <h2 className="text-lg font-bold bg-gradient-to-r from-red-600 to-red-800 dark:from-red-400 dark:to-red-600 bg-clip-text text-transparent">
+            Menu
+          </h2>
           <motion.button
-            onClick={() => setDarkMode(!darkMode)}
-            className="text-xl sm:text-2xl p-2 sm:p-3 rounded-full bg-white/20 dark:bg-gray-800/50 backdrop-blur-md border border-white/30 dark:border-white/10 text-red-600 dark:text-yellow-400 hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl"
-            title="Toggle Dark Mode"
-            aria-label="Toggle dark mode"
-            whileHover={{ rotate: 180 }}
+            onClick={() => setIsMenuOpen(false)}
+            className="p-2 rounded-full bg-white/20 dark:bg-gray-800/50 backdrop-blur-md border border-white/30 dark:border-white/10 text-red-600 dark:text-red-400 hover:scale-110 transition-all duration-300"
+            whileHover={{ rotate: 90 }}
             whileTap={{ scale: 0.9 }}
           >
-            {darkMode ? <FaSun /> : <FaMoon />}
+            <FaTimes />
           </motion.button>
         </div>
-      </header>
+
+        {/* Menu Items */}
+        <div className="flex flex-col py-6">
+          {["Hero","About", "Projects", "Skills", "Contact"].map((section, i) => (
+            <motion.a
+              key={section}
+              href={`#${section.toLowerCase()}`}
+              onClick={() => setIsMenuOpen(false)}
+              className="relative group px-6 py-4 text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 hover:bg-red-50/50 dark:hover:bg-red-900/20 transition-all duration-300 font-medium text-lg"
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ 
+                delay: i * 0.1 + 0.2,
+                duration: 0.3,
+                ease: "easeOut"
+              }}
+              whileHover={{ x: 10 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              {section}
+              <motion.span 
+                className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-red-500 to-red-600 dark:from-red-400 dark:to-red-500 scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"
+              />
+            </motion.a>
+          ))}
+        </div>
+
+        {/* Menu Footer */}
+        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-white/20 dark:border-white/10">
+          <div className="text-center">
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+              © {new Date().getFullYear()} Dhananjaya Perera
+            </p>
+            <div className="flex justify-center space-x-4 mt-3">
+              <div className="w-2 h-2 rounded-full bg-red-500/60 animate-pulse"></div>
+              <div className="w-2 h-2 rounded-full bg-red-500/40 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+              <div className="w-2 h-2 rounded-full bg-red-500/60 animate-pulse" style={{ animationDelay: '1s' }}></div>
+            </div>
+          </div>
+        </div>
+      </motion.nav>
+    )}
+  </AnimatePresence>
 
       {/* Fixed Social Media Sidebar - Hidden on mobile */}
       <div className="hidden lg:block fixed right-6 top-1/2 transform -translate-y-1/2 z-40">
