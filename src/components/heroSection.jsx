@@ -45,7 +45,10 @@ export default function HeroSection() {
 
   return (
     <section
-      className="min-h-screen relative flex items-center justify-center px-4 sm:px-6 lg:px-12 xl:px-16 text-black dark:text-white overflow-hidden"
+      className="min-h-screen relative flex items-center justify-center 
+                 px-4 sm:px-6 lg:px-12 xl:px-16 
+                 pt-20 sm:pt-24 lg:pt-20 xl:pt-24
+                 text-black dark:text-white overflow-hidden"
       id="hero"
     >
       {/* Matrix background */}
