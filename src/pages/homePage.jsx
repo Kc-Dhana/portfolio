@@ -151,13 +151,27 @@ useEffect(() => {
       backend: "https://github.com/your/hotel-backend",
       demo: "https://hotel-booking.vercel.app",
       images: [
+        "/leo1.PNG",
+        "/leo2.PNG",
+        "/leo3.PNG",
+        "/leo4.PNG",
+      ],
+    },
+    {
+      title: "Hotel Booking App",
+      description: "A MERN stack hotel booking app with admin dashboard.",
+      tech: ["React", "Node.js", "MongoDB"],
+      frontend: "https://github.com/your/hotel-frontend",
+      backend: "https://github.com/your/hotel-backend",
+      demo: "https://hotel-booking.vercel.app",
+      images: [
         "/Car_service.png",
         "/Car_service1.PNG",
         "/Car_service2.PNG",
         "/Car_service5.png",
       ],
     },
-    {
+        {
       title: "Employee API Service",
       description: "Microservice for employee management using Express.",
       tech: ["Express", "MongoDB"],
@@ -379,10 +393,10 @@ useEffect(() => {
       <div className="hidden lg:block fixed right-6 top-1/2 transform -translate-y-1/2 z-40">
         <div className="flex flex-col space-y-4">
           {[
-            { icon: <FaLinkedinIn />, href: "https://linkedin.com/in/your-profile", color: "hover:text-blue-700" },
-            { icon: <FaFacebookF />, href: "https://facebook.com/your-profile", color: "hover:text-blue-600" },
-            { icon: <FaInstagram />, href: "https://instagram.com/your-profile", color: "hover:text-pink-500" },
-            { icon: <FaGithub />, href: "https://github.com/your-username", color: "hover:text-gray-800 dark:hover:text-white" }
+            { icon: <FaLinkedinIn />, href: "https://www.linkedin.com/in/dhananjaya-perera99/", color: "hover:text-blue-700" },
+            { icon: <FaFacebookF />, href: "https://www.facebook.com/share/1AxS4aXme8/?mibextid=wwXIfr", color: "hover:text-blue-600" },
+            { icon: <FaInstagram />, href: "https://www.instagram.com/kc_dhana?igsh=MXNudXcyNWVkMnR1OA%3D%3D&utm_source=qr", color: "hover:text-pink-500" },
+            { icon: <FaGithub />, href: "https://github.com/Kc-Dhana", color: "hover:text-gray-800 dark:hover:text-white" }
           ].map((social, i) => (
             <motion.a
               key={i}
