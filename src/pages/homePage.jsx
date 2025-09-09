@@ -151,10 +151,10 @@ useEffect(() => {
       backend: "https://github.com/Kc-Dhana/emp-management-backend",
       demo: "https://cinnamonleos.org/",
       images: [
-        "/leo1.PNG",
-        "/leo2.PNG",
-        "/leo3.PNG",
-        "/leo4.PNG",
+        "/leo1.webp",
+        "/leo2.webp",
+        "/leo3.webp",
+        "/leo4.webp",
       ],
     },
         {
@@ -165,12 +165,12 @@ useEffect(() => {
       backend: "https://github.com/your/hotel-backend",
       demo: "https://leoninevilla.vercel.app/",
       images: [
-        "/h1.PNG",
-        "/h2.PNG",
-        "/h3.PNG",
-        "/h4.PNG",
-        "/h5.PNG",
-        "/h6.PNG",
+        "/h1.webp",
+        "/h2.webp",
+        "/h3.webp",
+        "/h4.webp",
+        "/h5.webp",
+        "/h6.webp",
       ],
     },
     {
@@ -179,10 +179,10 @@ useEffect(() => {
       tech: ["C#", ".NET WinForms", "Microsoft SQL Server"],
       fullstack: "https://github.com/Kc-Dhana/Car_service",
       images: [
-        "/Car_service.png",
-        "/Car_service1.PNG",
-        "/Car_service2.PNG",
-        "/Car_service5.png",
+        "/Car_service.webp",
+        "/Car_service1.webp",
+        "/Car_service2.webp",
+        "/Car_service5.webp",
       ],
     },
       {
@@ -191,10 +191,10 @@ useEffect(() => {
         tech: ["React", "Node.js", "Express", "MongoDB"],
         fullstack: "https://github.com/Kc-Dhana/blog-mern",
         images: [
-          "/blog1.png",
-          "/blog2.png",
-          "/blog3.png",
-          "/blog4.png",
+          "/blog1.webp",
+          "/blog2.webp",
+          "/blog3.webp",
+          "/blog4.webp",
         ],
       },
      {
@@ -203,10 +203,10 @@ useEffect(() => {
       tech:  ["Dart", "Flutter", "Firebase"],
       fullstack: "https://github.com/Kc-Dhana/blog-mern",
       images: [
-        "/tg1.jpeg",
-        "/tg2.jpeg",
-        "/tg3.jpeg",
-        "/tg4.jpeg",
+        "/tg1.webp",
+        "/tg2.webp",
+        "/tg3.webp",
+        "/tg4.webp",
       ],
     },
          {
@@ -215,9 +215,9 @@ useEffect(() => {
       tech: ["React", "Tailwind CSS"],
       fullstack: "https://github.com/Kc-Dhana/portfolio",
       images: [
-        "/p1.PNG",
-        "/p2.PNG",
-        "/p3.PNG",
+        "/p1.webp",
+        "/p2.webp",
+        "/p3.webp",
       ],
     },
   ];
@@ -510,7 +510,7 @@ useEffect(() => {
                 }}
               />
               <img
-                src="/My_Photo2.png"
+                src="/My_Photo2.webp"
                 alt="Dhananjaya"
                 className="relative z-20 w-[250px] h-[320px] sm:w-[300px] sm:h-[400px] lg:w-[340px] lg:h-[460px] object-cover shadow-xl transition-all duration-700 ease-in-out group-hover:scale-110 grayscale group-hover:grayscale-0"
                 style={{

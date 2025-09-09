@@ -82,7 +82,7 @@ export default function HeroSection() {
           />
 
           <img
-            src="/My_Photo.png"
+            src="/My_Photo.webp"
             alt="Dhananjaya"
             className="relative z-20 
                       w-[240px] h-[320px] 
