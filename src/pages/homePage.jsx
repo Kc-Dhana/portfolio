@@ -486,10 +486,12 @@ useEffect(() => {
                   <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-red-500 via-red-600 to-red-500 dark:from-red-400 dark:via-red-500 dark:to-red-400 rounded-full opacity-80"></div>
                   <div className="absolute -bottom-1 left-1/4 w-1/2 h-0.5 bg-gradient-to-r from-transparent via-white dark:via-gray-200 to-transparent rounded-full opacity-60"></div>
                 </div>
+              <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                  I’m a 3rd-year NIBM student and a passionate software engineer specializing in web and desktop applications. I work with the MERN stack (MongoDB, Express, React, Node.js) for modern web apps and C# with .NET WinForms for desktop solutions. I enjoy creating responsive frontends and secure, efficient backends that bring ideas to life.
+                </p>
+
                 <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                  I'm a software engineer passionate about building scalable, modern web
-                  applications. I work with the MERN stack and love bringing designs to
-                  life with responsive frontends and secure backends.
+                  Over the years, I’ve built projects like hotel booking systems, club management websites, microservices, and portfolio websites. I’m always learning new technologies like Tailwind CSS, Supabase, Flutter, and Firebase, aiming to deliver applications that are functional, intuitive, and enjoyable for users.
                 </p>
               </div>
             </motion.div>
