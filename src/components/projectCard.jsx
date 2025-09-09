@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-export default function ProjectCard({ title, description, tech, images, frontend, backend, demo }) {
+export default function ProjectCard({ title, description, tech, images, frontend, backend, demo, fullstack }) {
   return (
     <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-md p-6 
                 transform transition-transform duration-300 
@@ -31,6 +31,9 @@ export default function ProjectCard({ title, description, tech, images, frontend
       <p className="text-sm text-gray-500 mb-4 italic">Tech: {tech.join(", ")}</p>
 
       <div className="flex flex-wrap gap-4">
+        {fullstack && (
+          <a href={fullstack} className="text-blue-600 hover:underline" target="_blank">Fullstack Code</a>
+        )}
         {frontend && (
           <a href={frontend} className="text-blue-600 hover:underline" target="_blank">Frontend Code</a>
         )}
