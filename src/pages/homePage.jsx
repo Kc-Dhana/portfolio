@@ -147,8 +147,8 @@ useEffect(() => {
       title: "Leo Club Website",
       description: "An official full-stack MERN website for a Leo Club with event management, member profiles, and admin controls.",
       tech: ["React", "Node.js", "MongoDB", "Supabase"],
-      frontend: "https://github.com/Kc-Dhana/hotel-booking-frontend",
-      backend: "https://github.com/Kc-Dhana/emp-management-backend",
+      frontend: "https://github.com/KavindaAppuhamy/Project-LCCG-Frontend",
+      backend: "https://github.com/KavindaAppuhamy/Project-LCCG-Backend",
       demo: "https://cinnamonleos.org/",
       images: [
         "/leo1.webp",
@@ -161,8 +161,8 @@ useEffect(() => {
       title: "Hotel Booking Website",
       description: "A full-stack MERN hotel booking application with admin dashboard and customer dashboard.",
       tech:["React", "Node.js", "MongoDB", "Supabase"],
-      frontend: "https://github.com/your/hotel-frontend",
-      backend: "https://github.com/your/hotel-backend",
+      frontend: "https://github.com/Kc-Dhana/hotel-booking-frontend",
+      backend: "https://github.com/Kc-Dhana/hotel-booking-backend",
       demo: "https://leoninevilla.vercel.app/",
       images: [
         "/h1.webp",
@@ -201,7 +201,7 @@ useEffect(() => {
       title: "TransitGuard",
       description: "A Flutter mobile app improving school transportation with better communication, safety, and reporting. (Work in progress)",
       tech:  ["Dart", "Flutter", "Firebase"],
-      fullstack: "https://github.com/Kc-Dhana/blog-mern",
+      fullstack: "https://github.com/Pasan-Mendis/Transit-Guard",
       images: [
         "/tg1.webp",
         "/tg2.webp",
